@@ -2,13 +2,23 @@
 
 A collection of GitHub actions for Vercel projects.
 
-## Example Playbook
+## Actions
+
+### Deploy to Vercel
+
+This action will deploy the application to Vercel.
+
+Example:
 
 ```yaml
-  - name: Build code
-    uses: aboutbits/github-actions-vercel/xxx@v1
+  - uses: actions/checkout@v3
+
+  - uses: aboutbits/github-actions-vercel/deploy@v1
     with:
-      xxx-version: ${{ env.NODE_VERSION }}
+      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      vercel-org-id: ${{ env.VERCEL_ORG_ID }}
+      vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
+      arguments: --prod
 ```
 
 ## Versioning

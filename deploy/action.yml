@@ -1,0 +1,32 @@
+name: 'Vercel - Deploy application'
+
+inputs:
+  working-directory:
+    description: 'The working directory'
+    required: false
+    default: '.'
+  vercel-token:
+    description: 'The Vercel token'
+    required: true
+  vercel-organization-id:
+    description: 'The Vercel organization id'
+    required: true
+  vercel-project-id:
+    description: 'The Vercel project id'
+    required: true
+  arguments:
+    description: 'Additional command line arguments'
+    required: false
+    default: ''
+  
+runs:
+  using: "composite"
+  steps:
+    - name: Build the application
+      working-directory: ${{ inputs.working-directory }}
+      run: npx --yes vercel build --yes ${{ inputs.arguments }}
+      shell: bash
+    - name: Deploy the application
+      working-directory: ${{ inputs.working-directory }}
+      run: npx --yes vercel deploy --prebuilt ${{ inputs.arguments }}
+      shell: bash
