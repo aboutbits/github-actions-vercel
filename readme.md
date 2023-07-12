@@ -14,10 +14,8 @@ Example:
   - uses: actions/checkout@v3
 
   - uses: aboutbits/github-actions-vercel/deploy@v1
+    env:
     with:
-      vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      vercel-org-id: ${{ env.VERCEL_ORG_ID }}
-      vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
       arguments: --prod
 ```
 
