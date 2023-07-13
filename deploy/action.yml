@@ -22,9 +22,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set Vercel token as environment variable
-      run: echo "VERCEL_TOKEN=${{ inputs.vercel-token }}" >> $GITHUB_ENV
-      shell: bash
     - name: Set Vercel organization id as environment variable
       run: echo "VERCEL_ORG_ID=${{ inputs.vercel-organization-id }}" >> $GITHUB_ENV
       shell: bash
@@ -33,9 +30,9 @@ runs:
       shell: bash
     - name: Build the application
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel build --yes ${{ inputs.arguments }}
+      run: npx --yes vercel build --token=${{ inputs.vercel-token }} --yes ${{ inputs.arguments }}
       shell: bash
     - name: Deploy the application
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel deploy --prebuilt ${{ inputs.arguments }}
+      run: npx --yes vercel deploy --token=${{ inputs.vercel-token }} --prebuilt ${{ inputs.arguments }}
       shell: bash
