@@ -5,6 +5,15 @@ inputs:
     description: 'The working directory'
     required: false
     default: '.'
+  vercel-token:
+    description: 'The Vercel token'
+    required: true
+  vercel-organization-id:
+    description: 'The Vercel organization id'
+    required: true
+  vercel-project-id:
+    description: 'The Vercel project id'
+    required: true
   arguments:
     description: 'Additional command line arguments'
     required: false
@@ -13,10 +22,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Echo environment varialb
-      working-directory: ${{ inputs.working-directory }}
-      run: echo $VERCEL_PROJECT_ID
-      shell: bash
+    - name: Set Vercel token as environment variable
+      run: echo "VERCEL_TOKEN=${{ inputs.vercel-token }}" >> $GITHUB_ENV
+    - name: Set Vercel organization id as environment variable
+      run: echo "VERCEL_ORG_ID=${{ inputs.vercel-organization-id }}" >> $GITHUB_ENV
+    - name: Set Vercel project id as environment variable
+      run: echo "VERCEL_PROJECT_ID=${{ inputs.vercel-project-id }}" >> $GITHUB_ENV
     - name: Build the application
       working-directory: ${{ inputs.working-directory }}
       run: npx --yes vercel build --yes ${{ inputs.arguments }}

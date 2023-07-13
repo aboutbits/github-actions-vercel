@@ -16,6 +16,9 @@ Example:
   - uses: aboutbits/github-actions-vercel/deploy@v1
     env:
     with:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      vercel-organization-id: xxx
+      vercel-project-id: yyy
       arguments: --prod
 ```
 
