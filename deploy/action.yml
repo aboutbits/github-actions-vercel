@@ -15,7 +15,7 @@ runs:
   steps:
     - name: Echo environment varialb
       working-directory: ${{ inputs.working-directory }}
-      run: echo $VERCEL_ORG_ID
+      run: echo $VERCEL_PROJECT_ID
       shell: bash
     - name: Build the application
       working-directory: ${{ inputs.working-directory }}
