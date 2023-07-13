@@ -13,6 +13,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Echo environment varialb
+      working-directory: ${{ inputs.working-directory }}
+      run: echo $VERCEL_ORG_ID
+      shell: bash
     - name: Build the application
       working-directory: ${{ inputs.working-directory }}
       run: npx --yes vercel build --yes ${{ inputs.arguments }}
