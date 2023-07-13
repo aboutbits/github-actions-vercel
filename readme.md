@@ -17,9 +17,28 @@ Example:
     env:
     with:
       vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      vercel-organization-id: xxx
-      vercel-project-id: yyy
+      vercel-organization-id: yyy
+      vercel-project-id: zzz
       arguments: --prod
+```
+
+### Add a domain
+
+This action will add a domain to a Vercel project.
+
+Example:
+
+```yaml
+  - uses: actions/checkout@v3
+
+  - uses: aboutbits/github-actions-vercel/add-domain@v1
+    env:
+    with:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      vercel-scope: xxx
+      vercel-organization-id: yyy
+      vercel-project-id: zzz
+      domain: example.aboutbits.it
 ```
 
 ## Versioning

@@ -1,0 +1,33 @@
+name: 'Vercel - Add a domain to a Vercel project'
+
+inputs:
+  vercel-token:
+    description: 'The Vercel token'
+    required: true
+  vercel-scope:
+    description: 'The Vercel scope'
+    required: true
+  vercel-organization-id:
+    description: 'The Vercel organization id'
+    required: true
+  vercel-project-id:
+    description: 'The Vercel project id'
+    required: true
+  domain:
+    description: 'The domain that should be added'
+    required: true
+  
+runs:
+  using: "composite"
+  steps:
+    - name: Set Vercel organization id as environment variable
+      run: echo "VERCEL_ORG_ID=${{ inputs.vercel-organization-id }}" >> $GITHUB_ENV
+      shell: bash
+    - name: Set Vercel project id as environment variable
+      run: echo "VERCEL_PROJECT_ID=${{ inputs.vercel-project-id }}" >> $GITHUB_ENV
+      shell: bash
+    - name: Add the domain
+      working-directory: ${{ inputs.working-directory }}
+      run: npx --yes vercel domain add --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.domain }}
+      shell: bash
+
