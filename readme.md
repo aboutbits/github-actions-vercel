@@ -8,7 +8,7 @@ A collection of GitHub actions for Vercel projects.
 
 This action will deploy the application to Vercel.
 
-Example:
+#### Example
 
 ```yaml
   - uses: actions/checkout@v3
@@ -26,7 +26,7 @@ Example:
 
 This action will add a domain to a Vercel project.
 
-Example:
+#### Example
 
 ```yaml
   - uses: actions/checkout@v3
@@ -39,6 +39,26 @@ Example:
       vercel-organization-id: yyy
       vercel-project-id: zzz
       domain: example.aboutbits.it
+```
+
+### Link a domain to a Vercel deployment
+
+This action will link an added domain to a Vercel deployment URL.
+
+#### Example
+
+```yaml
+  - uses: actions/checkout@v3
+
+  - uses: aboutbits/github-actions-vercel/link-domain@v1
+    env:
+    with:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      vercel-scope: xxx
+      vercel-organization-id: yyy
+      vercel-project-id: zzz
+      domain: example.aboutbits.it
+      url: https://xyz.vercel.app
 ```
 
 ## Versioning

@@ -1,4 +1,4 @@
-name: 'Vercel - Add a domain to a Vercel project'
+name: 'Vercel - Link a domain to a Vercel deployment'
 
 inputs:
   vercel-token:
@@ -16,6 +16,9 @@ inputs:
   domain:
     description: 'The domain that should be added'
     required: true
+  url:
+    description: 'The preview URL of a deployment'
+    required: true
   
 runs:
   using: "composite"
@@ -26,8 +29,8 @@ runs:
     - name: Set Vercel project id as environment variable
       run: echo "VERCEL_PROJECT_ID=${{ inputs.vercel-project-id }}" >> $GITHUB_ENV
       shell: bash
-    - name: Add the domain
+    - name: Link the domain to preview URL
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel domain add --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} --force ${{ inputs.domain }}
+      run: npx --yes vercel alias set --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.url }} ${{ inputs.domain }}
       shell: bash
 
