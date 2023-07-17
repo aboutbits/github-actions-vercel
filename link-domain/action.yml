@@ -4,9 +4,6 @@ inputs:
   vercel-token:
     description: 'The Vercel token'
     required: true
-  vercel-scope:
-    description: 'The Vercel scope'
-    required: true
   vercel-organization-id:
     description: 'The Vercel organization id'
     required: true
@@ -31,6 +28,6 @@ runs:
       shell: bash
     - name: Link the domain to preview URL
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel alias set --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.url }} ${{ inputs.domain }}
+      run: npx --yes vercel alias set --token=${{ inputs.vercel-token }} ${{ inputs.url }} ${{ inputs.domain }}
       shell: bash
 

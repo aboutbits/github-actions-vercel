@@ -22,24 +22,25 @@ This action will deploy the application to Vercel.
       arguments: --prod
 ```
 
-### Add a domain
+#### Inputs
 
-This action will add a domain to a Vercel project.
+The following inputs can be used as `step.with` keys:
 
-#### Example
+| Name                     | Required/Default | Description                                 |
+|--------------------------|------------------|---------------------------------------------|
+| `working-directory`      | (.)              | The working directory of the action         |
+| `vercel-token`           | Required         | The token to access the Vercel API          |
+| `vercel-organization-id` | Required         | The ID of the Vercel organization           |
+| `vercel-project-id`      | Required         | The ID of the Vercel project                |
+| `arguments`              | (empty)          | Additional CLI arguments for the deplyoment |
 
-```yaml
-  - uses: actions/checkout@v3
+#### Outputs
 
-  - uses: aboutbits/github-actions-vercel/add-domain@v1
-    env:
-    with:
-      vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      vercel-scope: xxx
-      vercel-organization-id: yyy
-      vercel-project-id: zzz
-      domain: example.aboutbits.it
-```
+The following outputs can be used after the successful execution:
+
+| Name                     | Description                       |
+|--------------------------|-----------------------------------|
+| `url`                    | The URL of the deployment         |
 
 ### Link a domain to a Vercel deployment
 
@@ -54,12 +55,23 @@ This action will link an added domain to a Vercel deployment URL.
     env:
     with:
       vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      vercel-scope: xxx
       vercel-organization-id: yyy
       vercel-project-id: zzz
       domain: example.aboutbits.it
       url: https://xyz.vercel.app
 ```
+
+#### Inputs
+
+The following inputs can be used as `step.with` keys:
+
+| Name                     | Required/Default | Description                                        |
+|--------------------------|------------------|----------------------------------------------------|
+| `working-directory`      | (.)              | The working directory of the action                |
+| `vercel-token`           | Required         | The token to access the Vercel API                 |
+| `vercel-organization-id` | Required         | The ID of the Vercel organization                  |
+| `domain`                 | Required         | The domain that should be linked                   |
+| `url`                    | Required         | The deployment URL of Vercel that should be linked |
 
 ## Versioning
 

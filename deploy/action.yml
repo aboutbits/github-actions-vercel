@@ -8,9 +8,6 @@ inputs:
   vercel-token:
     description: 'The Vercel token'
     required: true
-  vercel-scope:
-    description: 'The Vercel scope'
-    required: true
   vercel-organization-id:
     description: 'The Vercel organization id'
     required: true
@@ -38,10 +35,10 @@ runs:
       shell: bash
     - name: Build the application
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel build --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} --yes ${{ inputs.arguments }}
+      run: npx --yes vercel build --token=${{ inputs.vercel-token }} --yes ${{ inputs.arguments }}
       shell: bash
     - name: Deploy the application
       id: deploy
       working-directory: ${{ inputs.working-directory }}
-      run: echo "url=$(npx --yes vercel deploy --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} --prebuilt ${{ inputs.arguments }})" >> $GITHUB_OUTPUT
+      run: echo "url=$(npx --yes vercel deploy --token=${{ inputs.vercel-token }} --prebuilt ${{ inputs.arguments }})" >> $GITHUB_OUTPUT
       shell: bash
