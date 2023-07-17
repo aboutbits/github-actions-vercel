@@ -7,11 +7,11 @@ inputs:
   vercel-scope:
     description: 'The Vercel scope'
     required: true
-  domain:
-    description: 'The domain that should be added'
+  deployment-domain:
+    description: 'The deployment domain recieved from Vercel'
     required: true
-  url:
-    description: 'The preview URL of a deployment'
+  preview-domain:
+    description: 'The custom preview domain that should be linked'
     required: true
   
 runs:
@@ -19,6 +19,6 @@ runs:
   steps:
     - name: Link the domain to preview URL
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel alias set --token=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.url }} ${{ inputs.domain }}
+      run: npx --yes vercel alias set --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.deployment-domain }} ${{ inputs.preview-domain }}
       shell: bash
 

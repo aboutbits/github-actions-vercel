@@ -55,8 +55,7 @@ This action will link an added domain to a Vercel deployment URL.
     env:
     with:
       vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      vercel-organization-id: yyy
-      vercel-project-id: zzz
+      vercel-scope: xxx
       domain: example.aboutbits.it
       url: https://xyz.vercel.app
 ```
@@ -65,13 +64,13 @@ This action will link an added domain to a Vercel deployment URL.
 
 The following inputs can be used as `step.with` keys:
 
-| Name                     | Required/Default | Description                                        |
-|--------------------------|------------------|----------------------------------------------------|
-| `working-directory`      | (.)              | The working directory of the action                |
-| `vercel-token`           | Required         | The token to access the Vercel API                 |
-| `vercel-scope`           | Required         | The Vercel scope                                   |
-| `domain`                 | Required         | The domain that should be linked                   |
-| `url`                    | Required         | The deployment URL of Vercel that should be linked |
+| Name                     | Required/Default | Description                                     |
+|--------------------------|------------------|-------------------------------------------------|
+| `working-directory`      | (.)              | The working directory of the action             |
+| `vercel-token`           | Required         | The token to access the Vercel API              |
+| `vercel-scope`           | Required         | The Vercel scope                                |
+| `deployment-domain`      | Required         | The deployment domain recieved from Vercel      |
+| `preview-domain`         | Required         | The custom preview domain that should be linked |
 
 ## Versioning
 
