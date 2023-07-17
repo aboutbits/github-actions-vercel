@@ -69,7 +69,7 @@ The following inputs can be used as `step.with` keys:
 |--------------------------|------------------|----------------------------------------------------|
 | `working-directory`      | (.)              | The working directory of the action                |
 | `vercel-token`           | Required         | The token to access the Vercel API                 |
-| `vercel-organization-id` | Required         | The ID of the Vercel organization                  |
+| `vercel-scope`           | Required         | The Vercel scope                                   |
 | `domain`                 | Required         | The domain that should be linked                   |
 | `url`                    | Required         | The deployment URL of Vercel that should be linked |
 
