@@ -26,13 +26,14 @@ This action will deploy the application to Vercel.
 
 The following inputs can be used as `step.with` keys:
 
-| Name                     | Required/Default | Description                                 |
-|--------------------------|------------------|---------------------------------------------|
-| `working-directory`      | (.)              | The working directory of the action         |
-| `vercel-token`           | Required         | The token to access the Vercel API          |
-| `vercel-organization-id` | Required         | The ID of the Vercel organization           |
-| `vercel-project-id`      | Required         | The ID of the Vercel project                |
-| `arguments`              | (empty)          | Additional CLI arguments for the deplyoment |
+| Name                     | Required/Default | Description                              |
+|--------------------------|------------------|------------------------------------------|
+| `working-directory`      | (.)              | The working directory of the action      |
+| `vercel-token`           | Required         | The token to access the Vercel API       |
+| `vercel-organization-id` | Required         | The ID of the Vercel organization        |
+| `vercel-project-id`      | Required         | The ID of the Vercel project             |
+| `build-arguments`        | (empty)          | Additional build command line arguments  |
+| `deploy-arguments`       | (empty)          | Additional deploy command line arguments |
 
 #### Outputs
 

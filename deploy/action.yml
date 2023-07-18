@@ -14,8 +14,12 @@ inputs:
   vercel-project-id:
     description: 'The Vercel project id'
     required: true
-  arguments:
-    description: 'Additional command line arguments'
+  build-arguments:
+    description: 'Additional build command line arguments'
+    required: false
+    default: ''
+  deploy-arguments:
+    description: 'Additional deploy command line arguments'
     required: false
     default: ''
 
@@ -35,10 +39,10 @@ runs:
       shell: bash
     - name: Build the application
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel build --token=${{ inputs.vercel-token }} --yes ${{ inputs.arguments }}
+      run: npx --yes vercel build --token=${{ inputs.vercel-token }} --yes ${{ inputs.build-arguments }}
       shell: bash
     - name: Deploy the application
       id: deploy
       working-directory: ${{ inputs.working-directory }}
-      run: echo "url=$(npx --yes vercel deploy --token=${{ inputs.vercel-token }} --prebuilt ${{ inputs.arguments }})" >> $GITHUB_OUTPUT
+      run: echo "url=$(npx --yes vercel deploy --token=${{ inputs.vercel-token }} --prebuilt ${{ inputs.deploy-arguments }})" >> $GITHUB_OUTPUT
       shell: bash
