@@ -1,0 +1,21 @@
+name: 'Vercel - Unlink a domain of a Vercel deployment'
+
+inputs:
+  vercel-token:
+    description: 'The Vercel token'
+    required: true
+  vercel-scope:
+    description: 'The Vercel scope'
+    required: true
+  preview-domain:
+    description: 'The custom preview domain that should be unlinked'
+    required: true
+  
+runs:
+  using: "composite"
+  steps:
+    - name: Unlink the domain to preview URL
+      working-directory: ${{ inputs.working-directory }}
+      run: npx --yes vercel alias rm --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.preview-domain }}
+      shell: bash
+

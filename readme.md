@@ -57,8 +57,8 @@ This action will link an added domain to a Vercel deployment URL.
     with:
       vercel-token: ${{ secrets.VERCEL_TOKEN }}
       vercel-scope: xxx
-      domain: example.aboutbits.it
-      url: https://xyz.vercel.app
+      deployment-domain: https://xyz.vercel.app
+      preview-domain: example.aboutbits.it
 ```
 
 #### Inputs
@@ -72,6 +72,34 @@ The following inputs can be used as `step.with` keys:
 | `vercel-scope`           | Required         | The Vercel scope                                |
 | `deployment-domain`      | Required         | The deployment domain recieved from Vercel      |
 | `preview-domain`         | Required         | The custom preview domain that should be linked |
+
+### Unlink a domain of a Vercel deployment
+
+This action will unlink an added domain of a Vercel deployment URL.
+
+#### Example
+
+```yaml
+  - uses: actions/checkout@v3
+
+  - uses: aboutbits/github-actions-vercel/unlink-domain@v1
+    env:
+    with:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      vercel-scope: xxx
+      preview-domain: example.aboutbits.it
+```
+
+#### Inputs
+
+The following inputs can be used as `step.with` keys:
+
+| Name                     | Required/Default | Description                                       |
+|--------------------------|------------------|---------------------------------------------------|
+| `working-directory`      | (.)              | The working directory of the action               |
+| `vercel-token`           | Required         | The token to access the Vercel API                |
+| `vercel-scope`           | Required         | The Vercel scope                                  |
+| `preview-domain`         | Required         | The custom preview domain that should be unlinked |
 
 ## Versioning
 
