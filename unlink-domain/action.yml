@@ -16,6 +16,6 @@ runs:
   steps:
     - name: Unlink the domain to preview URL
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel alias rm --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.preview-domain }}
+      run: npx --yes vercel alias rm --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.preview-domain }} --yes
       shell: bash
 
