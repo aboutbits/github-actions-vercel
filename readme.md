@@ -101,25 +101,9 @@ The following inputs can be used as `step.with` keys:
 | `vercel-scope`           | Required         | The Vercel scope                                  |
 | `preview-domain`         | Required         | The custom preview domain that should be unlinked |
 
-## Versioning
+## Build & Publish
 
-In order to have a verioning in place and working, create leightweight tags that point to the appropriate minor release versions.
-
-Creating a new minor release:
-
-```bash
-git tag v1
-git push --tags
-```
-
-Replacing an already existing minor release:
-
-```bash
-git tag -d v1
-git push origin :refs/tags/v1
-git tag v1
-git push --tags
-```
+To build and publish the chart, visit the GitHub Actions page of the repository and trigger the workflow "Release Package" manually.
 
 ## Information
 
