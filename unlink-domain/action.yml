@@ -14,6 +14,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Disable telemetry
+      working-directory: ${{ inputs.working-directory }}
+      run: npx --yes vercel@50.8.1 telemetry disable
+      shell: bash
     - name: Unlink the domain to preview URL
       working-directory: ${{ inputs.working-directory }}
       run: npx --yes vercel@50.8.1 alias rm --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.preview-domain }} --yes

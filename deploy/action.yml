@@ -31,6 +31,10 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Disable telemetry
+      working-directory: ${{ inputs.working-directory }}
+      run: npx --yes vercel@50.8.1 telemetry disable
+      shell: bash
     - name: Set Vercel organization id as environment variable
       run: echo "VERCEL_ORG_ID=${{ inputs.vercel-organization-id }}" >> $GITHUB_ENV
       shell: bash
@@ -39,10 +43,10 @@ runs:
       shell: bash
     - name: Build the application
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel build --token=${{ inputs.vercel-token }} --yes ${{ inputs.build-arguments }}
+      run: npx --yes vercel@50.8.1 build --token=${{ inputs.vercel-token }} --yes ${{ inputs.build-arguments }}
       shell: bash
     - name: Deploy the application
       id: deploy
       working-directory: ${{ inputs.working-directory }}
-      run: echo "url=$(npx --yes vercel deploy --token=${{ inputs.vercel-token }} --prebuilt ${{ inputs.deploy-arguments }})" >> $GITHUB_OUTPUT
+      run: echo "url=$(npx --yes vercel@50.8.1 deploy --token=${{ inputs.vercel-token }} --prebuilt ${{ inputs.deploy-arguments }})" >> $GITHUB_OUTPUT
       shell: bash
