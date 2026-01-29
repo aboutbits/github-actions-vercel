@@ -11,7 +11,7 @@ This action will deploy the application to Vercel.
 #### Example
 
 ```yaml
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v1
 
   - uses: aboutbits/github-actions-vercel/deploy@v1
     env:
@@ -50,7 +50,7 @@ This action will link an added domain to a Vercel deployment URL.
 #### Example
 
 ```yaml
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v1
 
   - uses: aboutbits/github-actions-vercel/link-domain@v1
     env:
@@ -80,7 +80,7 @@ This action will unlink an added domain of a Vercel deployment URL.
 #### Example
 
 ```yaml
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v1
 
   - uses: aboutbits/github-actions-vercel/unlink-domain@v1
     env:
