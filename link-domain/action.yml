@@ -19,10 +19,10 @@ runs:
   steps:
     - name: Disable telemetry
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel@50.8.1 telemetry disable
+      run: npx --yes vercel telemetry disable
       shell: bash
     - name: Link the domain to preview URL
       working-directory: ${{ inputs.working-directory }}
-      run: npx --yes vercel@50.8.1 alias set --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.deployment-domain }} ${{ inputs.preview-domain }}
+      run: npx --yes vercel alias set --scope=${{ inputs.vercel-scope }} --token=${{ inputs.vercel-token }} ${{ inputs.deployment-domain }} ${{ inputs.preview-domain }}
       shell: bash
 
